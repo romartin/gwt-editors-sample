@@ -1,9 +1,11 @@
 package org.roger600.gwt.editorsample.client.editor;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.editor.client.Editor;
+import com.google.gwt.editor.client.HasEditorErrors;
 import com.google.gwt.editor.client.IsEditor;
-import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.editor.client.ValueAwareEditor;
+import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
+import com.google.gwt.event.shared.HasHandlers;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import org.roger600.gwt.editorsample.client.Logger;
@@ -14,8 +16,9 @@ import javax.validation.ConstraintViolation;
 import java.util.Set;
 
 public class DataSetDefEditorPresenter implements IsWidget, IsEditor<DataSetDefEditor> {
-    
-    interface View extends IsWidget, DataSetDefEditor {
+
+    interface View extends IsWidget, DataSetDefEditor, HasHandlers, HasValueChangeHandlers<DataSetDef>,
+            ValueAwareEditor<DataSetDef>, HasEditorErrors<DataSetDef> {
         
     }
     

@@ -7,9 +7,16 @@ public class DataSetDef {
     protected String UUID;
     @NotNull
     protected String name;
+    
     protected boolean isPublic = true;
     protected Integer pushMaxSize = 1024;
-
+    
+    @NotNull
+    protected DataSetProviderType provider;
+    
+    
+    
+    
     public DataSetDef() {
     }
 
@@ -43,5 +50,13 @@ public class DataSetDef {
 
     public void setPushMaxSize(Integer pushMaxSize) {
         this.pushMaxSize = pushMaxSize;
+    }
+
+    public DataSetProviderType getProvider() {
+        return provider;
+    }
+
+    public void setProvider(DataSetProviderType provider) {
+        this.provider = provider;
     }
 }

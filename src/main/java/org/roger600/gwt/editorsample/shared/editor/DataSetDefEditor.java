@@ -5,4 +5,6 @@ import org.roger600.gwt.editorsample.shared.model.DataSetDef;
 
 public interface DataSetDefEditor extends Editor<DataSetDef> {
     
+    // DataSetDefProviderTypeEditor provider();
+    
 }

@@ -1,0 +1,27 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    >
+
+  <ui:style>
+    
+  </ui:style>
+  
+  <g:VerticalPanel>
+
+    <g:HorizontalPanel >
+
+      <g:CheckBox ui:field="staticCheckBox"/>
+      <g:CheckBox ui:field="beanCheckBox"/>
+      <g:CheckBox ui:field="sqlCheckBox"/>
+      <g:CheckBox ui:field="csvCheckBox"/>
+      <g:CheckBox ui:field="elasticCheckBox"/>
+
+    </g:HorizontalPanel>
+    
+    <g:HTML ui:field="errorLabel" visible="false"/>
+    
+  </g:VerticalPanel>
+  
+  
+</ui:UiBinder>
