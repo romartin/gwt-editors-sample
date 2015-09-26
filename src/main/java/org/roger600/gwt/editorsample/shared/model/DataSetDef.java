@@ -1,7 +1,11 @@
 package org.roger600.gwt.editorsample.shared.model;
 
+import javax.validation.constraints.NotNull;
+
 public class DataSetDef {
+    @NotNull
     protected String UUID;
+    @NotNull
     protected String name;
     protected boolean isPublic = true;
     protected Integer pushMaxSize = 1024;

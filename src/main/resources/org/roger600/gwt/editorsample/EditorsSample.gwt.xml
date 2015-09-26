@@ -18,6 +18,12 @@
 
   <set-property name="user.agent" value="gecko1_8,safari"/>
   <set-property name="locale" value="default"/>
+
+  <inherits name="org.hibernate.validator.HibernateValidator" />
+  <replace-with
+      class="org.roger600.gwt.editorsample.client.validation.DataSetDefValidatorFactory">
+    <when-type-is class="javax.validation.ValidatorFactory" />
+  </replace-with>
   
   <!-- Specify the paths for translatable code                    -->
   <source path='client' />

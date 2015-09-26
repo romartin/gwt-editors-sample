@@ -10,6 +10,9 @@ import org.roger600.gwt.editorsample.client.Logger;
 import org.roger600.gwt.editorsample.shared.editor.DataSetDefEditor;
 import org.roger600.gwt.editorsample.shared.model.DataSetDef;
 
+import javax.validation.ConstraintViolation;
+import java.util.Set;
+
 public class DataSetDefEditorPresenter implements IsWidget, IsEditor<DataSetDefEditor> {
     
     interface View extends IsWidget, DataSetDefEditor {
@@ -44,20 +47,25 @@ public class DataSetDefEditorPresenter implements IsWidget, IsEditor<DataSetDefE
         workflow.edit();
     }
     
+    public Set<ConstraintViolation<DataSetDef>> validate(final DataSetDef def) {
+        GWT.log("DataSetDefEditorPresenter#save - Validating...");
+        final Set<ConstraintViolation<DataSetDef>> violations = workflow.validate(def);
+        Logger.log("DataSetDefEditorPresenter#validate - Validated", violations );
+        return violations;
+    }
+
     public void save() {
         GWT.log("DataSetDefEditorPresenter#save - Saving...");
         workflow.save();
     }
     
     void onHasErrors() {
-        GWT.log("DataSetDefEditorPresenter#onHasErrors - Has errors!");
-        Logger.log(dataSetDef);
+        Logger.log("DataSetDefEditorPresenter#onHasErrors - Has errors!", dataSetDef);
     }
     
     void onSave(final DataSetDef saved) {
         this.dataSetDef = saved;
-        GWT.log("DataSetDefEditorPresenter#onSave - Saved!");
-        Logger.log(dataSetDef);
+        Logger.log("DataSetDefEditorPresenter#onSave - Saved!", dataSetDef);
     }
     
 }
