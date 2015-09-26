@@ -6,6 +6,7 @@ import com.google.gwt.editor.client.IsEditor;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
+import org.roger600.gwt.editorsample.client.Logger;
 import org.roger600.gwt.editorsample.shared.editor.DataSetDefEditor;
 import org.roger600.gwt.editorsample.shared.model.DataSetDef;
 
@@ -50,20 +51,13 @@ public class DataSetDefEditorPresenter implements IsWidget, IsEditor<DataSetDefE
     
     void onHasErrors() {
         GWT.log("DataSetDefEditorPresenter#onHasErrors - Has errors!");
-        log();
+        Logger.log(dataSetDef);
     }
     
     void onSave(final DataSetDef saved) {
         this.dataSetDef = saved;
         GWT.log("DataSetDefEditorPresenter#onSave - Saved!");
-        log();
+        Logger.log(dataSetDef);
     }
     
-    private void log() {
-        GWT.log("Data Set Def");
-        GWT.log("***********************************");
-        GWT.log("UUID=" + dataSetDef.getUUID());
-        GWT.log("Name=" + dataSetDef.getName());
-        
-    }
 }

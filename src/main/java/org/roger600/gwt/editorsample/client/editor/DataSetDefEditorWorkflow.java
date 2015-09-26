@@ -2,6 +2,7 @@ package org.roger600.gwt.editorsample.client.editor;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
+import org.roger600.gwt.editorsample.client.Logger;
 import org.roger600.gwt.editorsample.shared.editor.DataSetDefEditor;
 import org.roger600.gwt.editorsample.shared.model.DataSetDef;
 
@@ -17,10 +18,12 @@ public class DataSetDefEditorWorkflow {
     }
 
     void edit() {
+        final DataSetDef def = presenter.getDataSetDef();
+        Logger.log("DataSetDefEditorWorkflow#edit - Starting edit for def:", def);
         // Initialize the driver with the top-level editor
         driver.initialize(presenter.asEditor());
         // Copy the data in the object into the UI
-        driver.edit(presenter.getDataSetDef());
+        driver.edit(def);
     }
 
     // Called by some UI action
