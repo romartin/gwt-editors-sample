@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to="EditorsSample">
+  <!-- Inherit our applications main module.                      -->
+  <inherits name='org.roger600.gwt.editorsample.EditorsSample' />
+
+  <!-- Specify the path to any remote services.                   -->
+  <servlet path="/EditorsSample/greet" class="org.roger600.gwt.editorsample.server.GreetingServiceImpl" />
+
+</module>
