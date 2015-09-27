@@ -2,10 +2,12 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
              xmlns:e="urn:import:com.google.gwt.editor.ui.client"
-             >
+             xmlns:editors="urn:import:org.roger600.gwt.editorsample.client.editor">
 
   <ui:style>
-    
+    .leftMargin {
+      margin-left: 20px;
+    }
   </ui:style>
   
   <g:VerticalPanel >
@@ -29,6 +31,14 @@
         </e:valuebox>
       </e:ValueBoxEditorDecorator>
     </g:HorizontalPanel>
+
+    <!-- provider. -->
+    <g:VerticalPanel>
+      <g:HTML text="Provider"/>
+      <g:FlowPanel addStyleNames="{style.leftMargin}">
+        <editors:DataSetDefProviderTypeEditor ui:field="provider"/>
+      </g:FlowPanel>
+    </g:VerticalPanel>
 
   </g:VerticalPanel>
   

@@ -9,26 +9,16 @@
   
   <g:VerticalPanel>
 
-    <g:HorizontalPanel>
-      <g:HTML text="Bean: "/>
+    <g:HorizontalPanel >
+
+      <g:CheckBox ui:field="staticCheckBox"/>
       <g:CheckBox ui:field="beanCheckBox"/>
-    </g:HorizontalPanel>
-
-    <g:HorizontalPanel>
-      <g:HTML text="SQL: "/>
       <g:CheckBox ui:field="sqlCheckBox"/>
-    </g:HorizontalPanel>
-
-    <g:HorizontalPanel>
-      <g:HTML text="CSV: "/>
       <g:CheckBox ui:field="csvCheckBox"/>
-    </g:HorizontalPanel>
-
-    <g:HorizontalPanel>
-      <g:HTML text="ElasticSearch: "/>
       <g:CheckBox ui:field="elasticCheckBox"/>
-    </g:HorizontalPanel>
 
+    </g:HorizontalPanel>
+    
     <g:HTML ui:field="errorLabel" visible="false"/>
     
   </g:VerticalPanel>

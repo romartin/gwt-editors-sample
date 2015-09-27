@@ -7,6 +7,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import org.roger600.gwt.editorsample.client.editor.DataSetDefEditor;
 import org.roger600.gwt.editorsample.client.editor.DataSetDefEditorPresenter;
 import org.roger600.gwt.editorsample.shared.model.DataSetDef;
 import org.roger600.gwt.editorsample.shared.model.DataSetProviderType;
@@ -46,8 +47,7 @@ public class EditorsSample implements EntryPoint {
     saveButton.addClickHandler(new ClickHandler() {
       @Override
       public void onClick(ClickEvent event) {
-        presenter.save();
-        EditorsSample.this.def = presenter.getDataSetDef();
+        EditorsSample.this.def = presenter.save();
       }
     });
     validateButton.addClickHandler(new ClickHandler() {

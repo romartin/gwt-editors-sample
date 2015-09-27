@@ -7,21 +7,21 @@ import com.google.gwt.user.client.ui.Widget;
 import org.roger600.gwt.editorsample.shared.editor.DataSetDefProviderTypeEditor;
 import org.roger600.gwt.editorsample.shared.model.DataSetProviderType;
 
-public class DataSetDefProviderTypeEditorPresenter implements IsWidget, IsEditor<DataSetDefProviderTypeEditor> {
+public class DataSetDefProviderTypeEditor implements IsWidget, IsEditor<org.roger600.gwt.editorsample.shared.editor.DataSetDefProviderTypeEditor> {
     
-    interface View extends IsWidget, DataSetDefProviderTypeEditor {
+    interface View extends IsWidget, org.roger600.gwt.editorsample.shared.editor.DataSetDefProviderTypeEditor {
         
     }
     
     View view;
     private DataSetProviderType type;
     
-    public DataSetDefProviderTypeEditorPresenter() {
+    public DataSetDefProviderTypeEditor() {
         view = GWT.create(DataSetDefEditorView.class);
     }
 
     @Override
-    public DataSetDefProviderTypeEditor asEditor() {
+    public org.roger600.gwt.editorsample.shared.editor.DataSetDefProviderTypeEditor asEditor() {
         return view;
     }
 

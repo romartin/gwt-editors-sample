@@ -1,6 +1,7 @@
 package org.roger600.gwt.editorsample.client.editor;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.EditorError;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -15,35 +16,28 @@ import org.roger600.gwt.editorsample.shared.model.DataSetProviderType;
 
 import java.util.List;
 
-public class DataSetDefProviderTypeEditorView extends Composite implements DataSetDefProviderTypeEditorPresenter.View {
+public class DataSetDefProviderTypeEditorView extends Composite implements DataSetDefProviderTypeEditor.View {
 
     interface Binder extends UiBinder<Widget, DataSetDefProviderTypeEditorView> {
         Binder BINDER = GWT.create(Binder.class);
     }
     
     @UiField
-    @Ignore
-    CheckBox staticCheckBox;
-
-    @UiField
-    @Ignore
     CheckBox beanCheckBox;
 
     @UiField
-    @Ignore
     CheckBox sqlCheckBox;
 
     @UiField
-    @Ignore
     CheckBox csvCheckBox;
 
     @UiField
-    @Ignore
     CheckBox elasticCheckBox;
 
     @UiField
-    @Ignore
     HTML errorLabel;
+    
+    private DataSetDefProviderTypeEditor presenter;
     
     @UiConstructor
     public DataSetDefProviderTypeEditorView() {
@@ -51,27 +45,71 @@ public class DataSetDefProviderTypeEditorView extends Composite implements DataS
     }
 
     @Override
-    public DataSetProviderType getValue() {
-        return null;
+    public void init(DataSetDefProviderTypeEditor presenter) {
+        this.presenter = presenter;
     }
 
     @Override
-    public void setValue(DataSetProviderType value) {
-
+    public void setIsBeanType() {
+        enableType(beanCheckBox);
     }
 
     @Override
-    public void setValue(DataSetProviderType value, boolean fireEvents) {
-
+    public void setIsCSVType() {
+        enableType(csvCheckBox);
     }
 
     @Override
-    public HandlerRegistration addValueChangeHandler(ValueChangeHandler<DataSetProviderType> handler) {
-        return null;
+    public void setIsSQLType() {
+        enableType(sqlCheckBox);
     }
 
     @Override
-    public void showErrors(List<EditorError> errors) {
+    public void setIsElasticSearchType() {
+        enableType(elasticCheckBox);
+    }
 
+    @Override
+    public boolean isBeanType() {
+        return beanCheckBox.getValue();
+    }
+
+    @Override
+    public boolean isCSVType() {
+        return csvCheckBox.getValue();
+    }
+
+    @Override
+    public boolean isSQLType() {
+        return sqlCheckBox.getValue();
+    }
+
+    @Override
+    public boolean isElasticSearchType() {
+        return elasticCheckBox.getValue();
+    }
+
+    @Override
+    public void showError(String message) {
+        errorLabel.setText(message);
+        errorLabel.setVisible(true);
+    }
+
+    private void enableType(CheckBox type) {
+        clear();
+        type.setValue(true);
+    }
+    
+    private void clearError() {
+        errorLabel.setText("");
+        errorLabel.setVisible(false);
+    }
+    
+    private void clear() {
+        beanCheckBox.setValue(false);
+        sqlCheckBox.setValue(false);
+        csvCheckBox.setValue(false);
+        elasticCheckBox.setValue(false);
+        clearError();
     }
 }
