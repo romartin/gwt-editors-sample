@@ -34,7 +34,7 @@ public class Logger {
         if (errors != null) {
             for (EditorError editorError : errors) {
                 final String _message = editorError.getMessage();
-                GWT.log("Editor Error -> " + _message);
+                GWT.log("Editor Error for "  + editorError.getPath() + " -> " + _message);
             }
         } else {
             GWT.log("No errors.");
