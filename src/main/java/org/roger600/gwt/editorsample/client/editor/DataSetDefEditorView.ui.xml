@@ -15,21 +15,13 @@
     <!-- UUID. -->
     <g:HorizontalPanel>
       <g:HTML text="UUID"/>
-      <e:ValueBoxEditorDecorator ui:field='uuid'>
-        <e:valuebox>
-          <g:TextBox/>
-        </e:valuebox>
-      </e:ValueBoxEditorDecorator>
+      <editors:AttributeEditor ui:field="uuid"/>
     </g:HorizontalPanel>
 
     <!-- Name. -->
     <g:HorizontalPanel>
       <g:HTML text="Name"/>
-      <e:ValueBoxEditorDecorator ui:field='name'>
-        <e:valuebox>
-          <g:TextBox/>
-        </e:valuebox>
-      </e:ValueBoxEditorDecorator>
+      <editors:AttributeEditor ui:field="name"/>
     </g:HorizontalPanel>
 
     <!-- provider. -->
@@ -37,6 +29,14 @@
       <g:HTML text="Provider"/>
       <g:FlowPanel addStyleNames="{style.leftMargin}">
         <editors:DataSetDefProviderTypeEditor ui:field="provider"/>
+      </g:FlowPanel>
+    </g:VerticalPanel>
+
+    <!-- Column. -->
+    <g:VerticalPanel>
+      <g:HTML text="Columns"/>
+      <g:FlowPanel addStyleNames="{style.leftMargin}">
+        <editors:DataSetDefColumnsEditor ui:field="columns"/>
       </g:FlowPanel>
     </g:VerticalPanel>
 

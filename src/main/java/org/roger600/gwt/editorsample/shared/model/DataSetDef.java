@@ -1,6 +1,7 @@
 package org.roger600.gwt.editorsample.shared.model;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 public class DataSetDef {
     @NotNull
@@ -8,14 +9,11 @@ public class DataSetDef {
     @NotNull
     protected String name;
     
-    protected boolean isPublic = true;
-    protected Integer pushMaxSize = 1024;
-    
     @NotNull
     protected DataSetProviderType provider;
     
-    
-    
+    @NotNull
+    protected List<DataColumnDef> columns;
     
     public DataSetDef() {
     }
@@ -36,27 +34,19 @@ public class DataSetDef {
         this.name = name;
     }
 
-    public boolean isPublic() {
-        return isPublic;
-    }
-
-    public void setIsPublic(boolean isPublic) {
-        this.isPublic = isPublic;
-    }
-
-    public Integer getPushMaxSize() {
-        return pushMaxSize;
-    }
-
-    public void setPushMaxSize(Integer pushMaxSize) {
-        this.pushMaxSize = pushMaxSize;
-    }
-
     public DataSetProviderType getProvider() {
         return provider;
     }
 
     public void setProvider(DataSetProviderType provider) {
         this.provider = provider;
+    }
+
+    public List<DataColumnDef> getColumns() {
+        return columns;
+    }
+
+    public void setColumns(List<DataColumnDef> columns) {
+        this.columns = columns;
     }
 }

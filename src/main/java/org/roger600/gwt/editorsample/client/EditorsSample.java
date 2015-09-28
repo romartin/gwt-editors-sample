@@ -7,10 +7,13 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import org.roger600.gwt.editorsample.client.editor.DataSetDefEditor;
-import org.roger600.gwt.editorsample.client.editor.DataSetDefEditorPresenter;
+import org.roger600.gwt.editorsample.shared.model.ColumnType;
+import org.roger600.gwt.editorsample.shared.model.DataColumnDef;
 import org.roger600.gwt.editorsample.shared.model.DataSetDef;
 import org.roger600.gwt.editorsample.shared.model.DataSetProviderType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -32,7 +35,7 @@ public class EditorsSample implements EntryPoint {
   public void onModuleLoad() {
     initDef();
     
-    final DataSetDefEditorPresenter presenter = new DataSetDefEditorPresenter();
+    final DataSetDefEditorWorkflow presenter = new DataSetDefEditorWorkflow();
     
     final VerticalPanel mainPanel = new VerticalPanel();
     final Button editButton = new Button("Edit");
@@ -65,9 +68,17 @@ public class EditorsSample implements EntryPoint {
   
   private void initDef() {
     def =  new DataSetDef();
+
+    // Basic attrs.
     def.setUUID("uuid1");
     def.setName("name1");
     def.setProvider(DataSetProviderType.BEAN);
+
+    // Columns.
+    List<DataColumnDef> columns = new ArrayList<>();
+    DataColumnDef column1 = new DataColumnDef("Column1", ColumnType.TEXT);
+    columns.add(column1);    
+    def.setColumns(columns);
   }
   
 }

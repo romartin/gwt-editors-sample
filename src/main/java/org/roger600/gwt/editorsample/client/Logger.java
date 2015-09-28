@@ -2,6 +2,7 @@ package org.roger600.gwt.editorsample.client;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.EditorError;
+import org.roger600.gwt.editorsample.shared.model.DataColumnDef;
 import org.roger600.gwt.editorsample.shared.model.DataSetDef;
 import org.roger600.gwt.editorsample.shared.model.DataSetProviderType;
 
@@ -11,6 +12,10 @@ import java.util.Set;
 
 public class Logger {
 
+    public static void log(final String message) {
+        GWT.log(message);
+    }
+    
     public static void log(final String message, final DataSetDef dataSetDef) {
         GWT.log(message);
         log(dataSetDef);
@@ -48,7 +53,19 @@ public class Logger {
         GWT.log("Name=" + dataSetDef.getName());
         final DataSetProviderType type = dataSetDef.getProvider();
         GWT.log("Type=" + (type != null ? type.name() : "null") );
+        List<DataColumnDef> columns = dataSetDef.getColumns();
+        if (columns != null) {
+            GWT.log("  Columns");
+            GWT.log("  -------");
+            for (DataColumnDef columnDef : columns) {
+                log("  ", columnDef);
+            }
+        }
 
+    }
+
+    public static void log(final String indent, final DataColumnDef columnDef) {
+        GWT.log( indent + "Id=" + columnDef.getId());
     }
     
 }

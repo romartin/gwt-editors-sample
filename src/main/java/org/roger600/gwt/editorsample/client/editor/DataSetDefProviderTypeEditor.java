@@ -27,6 +27,7 @@ public class DataSetDefProviderTypeEditor implements IsWidget, org.roger600.gwt.
     }
     
     View view;
+    private DataSetProviderType value;
     
     public DataSetDefProviderTypeEditor() {
         view = GWT.create(DataSetDefProviderTypeEditorView.class);
@@ -52,6 +53,8 @@ public class DataSetDefProviderTypeEditor implements IsWidget, org.roger600.gwt.
 
     @Override
     public void setValue(DataSetProviderType value) {
+        Logger.log("DataSetDefProviderTypeEditor#setValue=" + value);
+        this.value = value;
         if (DataSetProviderType.BEAN.equals(value)) {
             view.setIsBeanType();
         } else if (DataSetProviderType.CSV.equals(value)) {
