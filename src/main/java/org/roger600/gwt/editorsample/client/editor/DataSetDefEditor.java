@@ -12,7 +12,7 @@ import java.util.List;
 public class DataSetDefEditor implements IsWidget, org.roger600.gwt.editorsample.shared.editors.DataSetDefEditor {
 
     interface View extends IsWidget {
-        void init(DataSetDefEditor presenter, AttributeEditor<String> uuidEditor, AttributeEditor<String> nameEditor,
+        void init(DataSetDefEditor presenter, StringAttributeEditor uuidEditor, StringAttributeEditor nameEditor,
                   DataSetDefProviderTypeEditor providerTypeEditor, DataSetDefColumnsEditor columnsEditor);
     }
     
@@ -20,14 +20,14 @@ public class DataSetDefEditor implements IsWidget, org.roger600.gwt.editorsample
     private EditorDelegate<DataSetDef> delegate;
     private DataSetDef dataSetDef;
 
-    private AttributeEditor<String> uuidEditor;
-    private AttributeEditor<String> nameEditor;
+    private StringAttributeEditor uuidEditor;
+    private StringAttributeEditor nameEditor;
     private DataSetDefProviderTypeEditor providerTypeEditor;
     private DataSetDefColumnsEditor columnsEditor;
     
     public DataSetDefEditor() {
-        uuidEditor = new AttributeEditor<String>();
-        nameEditor = new AttributeEditor<String>();
+        uuidEditor = new StringAttributeEditor();
+        nameEditor = new StringAttributeEditor();
         providerTypeEditor = new DataSetDefProviderTypeEditor();
         columnsEditor = new DataSetDefColumnsEditor();
         view = GWT.create(DataSetDefEditorView.class);

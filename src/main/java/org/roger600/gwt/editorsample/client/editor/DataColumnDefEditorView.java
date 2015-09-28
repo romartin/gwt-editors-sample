@@ -13,7 +13,7 @@ public class DataColumnDefEditorView extends Composite implements DataColumnDefE
     }
 
     @UiField(provided = true)
-    AttributeEditor<String> id;
+    StringAttributeEditor id;
     
     private DataColumnDefEditor presenter;
     
@@ -22,7 +22,7 @@ public class DataColumnDefEditorView extends Composite implements DataColumnDefE
     }
 
     @Override
-    public void init(DataColumnDefEditor presenter, AttributeEditor<String> idEditor) {
+    public void init(DataColumnDefEditor presenter, StringAttributeEditor idEditor) {
         this.presenter = presenter;
         this.id = idEditor;
         initWidget(Binder.BINDER.createAndBindUi(this));

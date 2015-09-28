@@ -14,7 +14,7 @@
     <!-- Column Id. -->
     <g:HorizontalPanel>
       <g:HTML text="Column Id"/>
-      <editors:AttributeEditor ui:field="id"/>
+      <editors:StringAttributeEditor ui:field="id"/>
     </g:HorizontalPanel>
     
   </g:VerticalPanel>

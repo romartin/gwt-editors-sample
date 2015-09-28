@@ -13,18 +13,18 @@ import java.util.List;
 public class DataColumnDefEditor implements IsWidget, org.roger600.gwt.editorsample.shared.editors.DataColumnDefEditor {
 
     interface View extends IsWidget {
-        void init(DataColumnDefEditor presenter, AttributeEditor<String> idEditor);
+        void init(DataColumnDefEditor presenter, StringAttributeEditor idEditor);
         
     }
     
     private View view;
     private EditorDelegate<DataColumnDef> delegate;
     private DataColumnDef column;
-    private AttributeEditor<String> idEditor;
+    private StringAttributeEditor idEditor;
     
     public DataColumnDefEditor() {
         super();
-        idEditor = new AttributeEditor<String>();
+        idEditor = new StringAttributeEditor();
         view = GWT.create(DataColumnDefEditorView.class);
         view.init(this, idEditor);
     }
