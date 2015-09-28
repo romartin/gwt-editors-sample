@@ -6,6 +6,6 @@ import com.google.gwt.editor.client.LeafValueEditor;
 import com.google.gwt.editor.client.ValueAwareEditor;
 import com.google.gwt.editor.ui.client.adapters.ValueBoxEditor;
 
-public interface AttributeEditor<T> extends HasEditorErrors<T>, IsEditor<LeafValueEditor<T>> {
+public interface AttributeEditor<T> extends HasEditorErrors<T>, LeafValueEditor<T> {
     
 }
