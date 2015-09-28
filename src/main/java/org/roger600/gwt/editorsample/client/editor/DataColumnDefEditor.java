@@ -36,7 +36,7 @@ public class DataColumnDefEditor implements IsWidget, org.roger600.gwt.editorsam
 
     @Override
     public org.roger600.gwt.editorsample.shared.editors.AttributeEditor<String> id() {
-        return idEditor.asEditor();
+        return idEditor;
     }
     
     @Override

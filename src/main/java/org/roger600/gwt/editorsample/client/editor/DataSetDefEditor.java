@@ -68,12 +68,12 @@ public class DataSetDefEditor implements IsWidget, org.roger600.gwt.editorsample
 
     @Override
     public org.roger600.gwt.editorsample.shared.editors.AttributeEditor<String> UUID() {
-        return uuidEditor.asEditor();
+        return uuidEditor;
     }
 
     @Override
     public org.roger600.gwt.editorsample.shared.editors.AttributeEditor<String> name() {
-        return nameEditor.asEditor();
+        return nameEditor;
     }
 
     @Override
