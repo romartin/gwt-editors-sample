@@ -15,13 +15,13 @@
     <!-- UUID. -->
     <g:HorizontalPanel>
       <g:HTML text="UUID"/>
-      <editors:StringAttributeEditor ui:field="uuid"/>
+      <e:ValueBoxEditorDecorator ui:field="uuid"/>
     </g:HorizontalPanel>
 
     <!-- Name. -->
     <g:HorizontalPanel>
       <g:HTML text="Name"/>
-      <editors:StringAttributeEditor ui:field="name"/>
+      <e:ValueBoxEditorDecorator ui:field="name"/>
     </g:HorizontalPanel>
 
     <!-- provider. -->

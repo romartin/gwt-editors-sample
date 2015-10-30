@@ -1,5 +1,6 @@
 package org.roger600.gwt.editorsample.shared.model;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class DataSetDef {
     @NotNull
     protected DataSetProviderType provider;
     
-    @NotNull
+    @Valid
     protected List<DataColumnDef> columns;
     
     public DataSetDef() {

@@ -2,7 +2,10 @@ package org.roger600.gwt.editorsample.client.editor;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.*;
+import com.google.gwt.editor.ui.client.ValueBoxEditorDecorator;
+import com.google.gwt.editor.ui.client.adapters.ValueBoxEditor;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import org.roger600.gwt.editorsample.client.Logger;
 import org.roger600.gwt.editorsample.shared.model.DataSetDef;
@@ -12,7 +15,7 @@ import java.util.List;
 public class DataSetDefEditor implements IsWidget, org.roger600.gwt.editorsample.shared.editors.DataSetDefEditor {
 
     interface View extends IsWidget {
-        void init(DataSetDefEditor presenter, StringAttributeEditor uuidEditor, StringAttributeEditor nameEditor,
+        void init(DataSetDefEditor presenter, ValueBoxEditorDecorator uuidEditor, ValueBoxEditorDecorator nameEditor,
                   DataSetDefProviderTypeEditor providerTypeEditor, DataSetDefColumnsEditor columnsEditor);
     }
     
@@ -20,14 +23,18 @@ public class DataSetDefEditor implements IsWidget, org.roger600.gwt.editorsample
     private EditorDelegate<DataSetDef> delegate;
     private DataSetDef dataSetDef;
 
-    private StringAttributeEditor uuidEditor;
-    private StringAttributeEditor nameEditor;
+    private ValueBoxEditorDecorator<String> uuidEditor;
+    private ValueBoxEditorDecorator<String> nameEditor;
     private DataSetDefProviderTypeEditor providerTypeEditor;
     private DataSetDefColumnsEditor columnsEditor;
     
     public DataSetDefEditor() {
-        uuidEditor = new StringAttributeEditor();
-        nameEditor = new StringAttributeEditor();
+        final TextBox uuidBox = new TextBox();
+        final ValueBoxEditor<String> uuidBoxEditor = ValueBoxEditor.of(uuidBox); 
+        uuidEditor = new ValueBoxEditorDecorator<String>(uuidBox, uuidBoxEditor);
+        final TextBox nameBox = new TextBox();
+        final ValueBoxEditor<String> nameBoxEditor = ValueBoxEditor.of(nameBox);
+        nameEditor = new ValueBoxEditorDecorator<String>(nameBox, nameBoxEditor);
         providerTypeEditor = new DataSetDefProviderTypeEditor();
         columnsEditor = new DataSetDefColumnsEditor();
         view = GWT.create(DataSetDefEditorView.class);
@@ -67,12 +74,12 @@ public class DataSetDefEditor implements IsWidget, org.roger600.gwt.editorsample
     }
 
     @Override
-    public org.roger600.gwt.editorsample.shared.editors.AttributeEditor<String> UUID() {
+    public ValueBoxEditorDecorator<String> UUID() {
         return uuidEditor;
     }
 
     @Override
-    public org.roger600.gwt.editorsample.shared.editors.AttributeEditor<String> name() {
+    public ValueBoxEditorDecorator<String> name() {
         return nameEditor;
     }
 

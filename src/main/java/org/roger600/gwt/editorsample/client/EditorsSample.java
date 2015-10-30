@@ -34,9 +34,12 @@ public class EditorsSample implements EntryPoint {
    */
   public void onModuleLoad() {
     initDef();
-    
+    initDataSetDefEditor();
+  }
+
+  private void initDataSetDefEditor() {
     final DataSetDefEditorWorkflow presenter = new DataSetDefEditorWorkflow();
-    
+
     final VerticalPanel mainPanel = new VerticalPanel();
     final Button editButton = new Button("Edit");
     final Button saveButton = new Button("Save");

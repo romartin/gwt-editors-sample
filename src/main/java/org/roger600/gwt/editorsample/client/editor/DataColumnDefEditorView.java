@@ -1,6 +1,7 @@
 package org.roger600.gwt.editorsample.client.editor;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.editor.ui.client.ValueBoxEditorDecorator;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
@@ -13,7 +14,7 @@ public class DataColumnDefEditorView extends Composite implements DataColumnDefE
     }
 
     @UiField(provided = true)
-    StringAttributeEditor id;
+    ValueBoxEditorDecorator<String> id;
     
     private DataColumnDefEditor presenter;
     
@@ -22,7 +23,7 @@ public class DataColumnDefEditorView extends Composite implements DataColumnDefE
     }
 
     @Override
-    public void init(DataColumnDefEditor presenter, StringAttributeEditor idEditor) {
+    public void init(DataColumnDefEditor presenter, ValueBoxEditorDecorator<String> idEditor) {
         this.presenter = presenter;
         this.id = idEditor;
         initWidget(Binder.BINDER.createAndBindUi(this));

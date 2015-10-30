@@ -1,6 +1,7 @@
 package org.roger600.gwt.editorsample.client.editor;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.editor.ui.client.ValueBoxEditorDecorator;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
@@ -13,10 +14,10 @@ public class DataSetDefEditorView extends Composite implements DataSetDefEditor.
     }
 
     @UiField(provided = true)
-    StringAttributeEditor uuid;
+    ValueBoxEditorDecorator uuid;
 
     @UiField(provided = true)
-    StringAttributeEditor name;
+    ValueBoxEditorDecorator name;
 
     @UiField(provided = true)
     DataSetDefProviderTypeEditor provider;
@@ -31,7 +32,7 @@ public class DataSetDefEditorView extends Composite implements DataSetDefEditor.
     }
 
     @Override
-    public void init(DataSetDefEditor presenter, StringAttributeEditor uuidEditor, StringAttributeEditor nameEditor,
+    public void init(DataSetDefEditor presenter, ValueBoxEditorDecorator uuidEditor, ValueBoxEditorDecorator nameEditor,
                      DataSetDefProviderTypeEditor providerTypeEditor, DataSetDefColumnsEditor columnsEditor) {
         this.presenter = presenter;
         uuid = uuidEditor;
