@@ -1,11 +1,13 @@
-package org.roger600.gwt.editorsample.client.editor.attribute;
+package org.roger600.gwt.editorsample.client.editor;
 
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.EditorError;
 import com.google.gwt.editor.client.HasEditorErrors;
 import com.google.gwt.editor.client.IsEditor;
 import com.google.gwt.editor.ui.client.adapters.ValueBoxEditor;
+import com.google.gwt.uibinder.client.UiChild;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.ValueBoxBase;
 import com.google.gwt.user.client.ui.Widget;
 import org.roger600.gwt.editorsample.client.Logger;
 import org.roger600.gwt.editorsample.shared.editors.AttributeEditor;
@@ -13,19 +15,20 @@ import org.roger600.gwt.editorsample.shared.editors.AttributeEditor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StringAttributeEditor implements IsWidget, AttributeEditor<String> {
+public class DefaultAttributeEditor<T> implements IsWidget, AttributeEditor<T> {
 
-    public interface View extends IsWidget, IsEditor<ValueBoxEditor<String>>, HasEditorErrors<String> {
-        
+    public interface View<T> extends IsWidget, IsEditor<ValueBoxEditor<T>>, HasEditorErrors<T> {
+        @UiChild(limit = 1, tagname = "valuebox")
+        void setValueBox(final ValueBoxBase<T> widget);
     }
     
-    public View view;
+    public View<T> view;
     
-    public StringAttributeEditor() {
-        view = new StringAttributeEditorView();
+    public DefaultAttributeEditor() {
+        view = new DefaultAttributeEditorView<T>();
     }
 
-    public StringAttributeEditor(final View view) {
+    public DefaultAttributeEditor(final View view) {
         this.view = view;
     }
     
@@ -34,6 +37,16 @@ public class StringAttributeEditor implements IsWidget, AttributeEditor<String> 
         return view.asWidget();
     }
 
+    @Override
+    public void setValue(T value) {
+        view.asEditor().setValue(value);
+    }
+
+    @Override
+    public T getValue() {
+        return view.asEditor().getValue();
+    }
+    
     @Override
     public void showErrors(List<EditorError> errors) {
         final List<EditorError> subEditorErrors = new ArrayList<>();
@@ -93,13 +106,5 @@ public class StringAttributeEditor implements IsWidget, AttributeEditor<String> 
         };
     }
 
-    @Override
-    public void setValue(String value) {
-        view.asEditor().setValue(value);
-    }
-
-    @Override
-    public String getValue() {
-        return view.asEditor().getValue();
-    }
+    
 }

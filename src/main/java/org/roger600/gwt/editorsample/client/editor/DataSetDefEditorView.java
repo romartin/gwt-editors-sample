@@ -5,7 +5,6 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
-import org.roger600.gwt.editorsample.client.editor.attribute.StringAttributeEditor;
 
 public class DataSetDefEditorView extends Composite implements DataSetDefEditor.View {
 
@@ -14,10 +13,10 @@ public class DataSetDefEditorView extends Composite implements DataSetDefEditor.
     }
 
     @UiField(provided = true)
-    StringAttributeEditor.View uuid;
+    DefaultAttributeEditor.View uuid;
 
     @UiField(provided = true)
-    StringAttributeEditor.View name;
+    DefaultAttributeEditor.View name;
 
     @UiField(provided = true)
     DataSetDefProviderTypeEditor.View provider;
@@ -28,7 +27,7 @@ public class DataSetDefEditorView extends Composite implements DataSetDefEditor.
     DataSetDefEditor presenter;
 
     @Override
-    public void init(DataSetDefEditor presenter, StringAttributeEditor.View uuidEditor, StringAttributeEditor.View nameEditor,
+    public void init(DataSetDefEditor presenter, DefaultAttributeEditor.View uuidEditor, DefaultAttributeEditor.View nameEditor,
                      DataSetDefProviderTypeEditor.View providerTypeEditor, DataSetDefColumnsEditor.View columnsEditor) {
         this.presenter = presenter;
         uuid = uuidEditor;

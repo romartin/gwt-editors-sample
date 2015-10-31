@@ -6,18 +6,19 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.roger600.gwt.editorsample.client.editor.DefaultAttributeEditor;
 
 import java.util.ArrayList;
 
 @RunWith(MockitoJUnitRunner.class)
-public class StringAttributeEditorTest {
+public class DefaultAttributeEditorTest {
 
-    @Mock StringAttributeEditor.View view;
-    private StringAttributeEditor presenter;
+    @Mock DefaultAttributeEditor.View view;
+    private DefaultAttributeEditor presenter;
     
     @Before
     public void setup() {
-        presenter = new StringAttributeEditor(view);
+        presenter = new DefaultAttributeEditor(view);
     }
 
     @Test

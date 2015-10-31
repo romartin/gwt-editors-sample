@@ -1,7 +1,7 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
              xmlns:g="urn:import:com.google.gwt.user.client.ui"
-             xmlns:sae="urn:import:org.roger600.gwt.editorsample.client.editor.attribute"
+             xmlns:sae="urn:import:org.roger600.gwt.editorsample.client.editor"
     >
 
   <ui:style>
@@ -13,7 +13,11 @@
     <!-- Column Id. -->
     <g:HorizontalPanel>
       <g:HTML text="Column Id"/>
-      <sae:StringAttributeEditor.View ui:field="id"/>
+      <sae:DefaultAttributeEditor.View ui:field="id">
+        <sae:valuebox>
+          <g:TextBox/>
+        </sae:valuebox>
+      </sae:DefaultAttributeEditor.View>
     </g:HorizontalPanel>
     
   </g:VerticalPanel>

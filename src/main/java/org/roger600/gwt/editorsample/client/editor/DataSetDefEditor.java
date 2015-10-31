@@ -5,7 +5,6 @@ import com.google.gwt.editor.client.EditorError;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import org.roger600.gwt.editorsample.client.Logger;
-import org.roger600.gwt.editorsample.client.editor.attribute.StringAttributeEditor;
 import org.roger600.gwt.editorsample.shared.editors.AttributeEditor;
 import org.roger600.gwt.editorsample.shared.model.DataSetDef;
 
@@ -15,7 +14,7 @@ public class DataSetDefEditor implements IsWidget, org.roger600.gwt.editorsample
 
     interface View extends IsWidget {
         
-        void init(DataSetDefEditor presenter, StringAttributeEditor.View uuidEditor, StringAttributeEditor.View nameEditor,
+        void init(DataSetDefEditor presenter, DefaultAttributeEditor.View uuidEditor, DefaultAttributeEditor.View nameEditor,
                   DataSetDefProviderTypeEditor.View providerTypeEditor, DataSetDefColumnsEditor.View columnsEditor);
     }
     
@@ -23,14 +22,14 @@ public class DataSetDefEditor implements IsWidget, org.roger600.gwt.editorsample
     private EditorDelegate<DataSetDef> delegate;
     private DataSetDef dataSetDef;
 
-    private StringAttributeEditor uuidEditor;
-    private StringAttributeEditor nameEditor;
+    private DefaultAttributeEditor<String> uuidEditor;
+    private DefaultAttributeEditor<String> nameEditor;
     private DataSetDefProviderTypeEditor providerTypeEditor;
     private DataSetDefColumnsEditor columnsEditor;
     
     public DataSetDefEditor() {
-        uuidEditor = new StringAttributeEditor();
-        nameEditor = new StringAttributeEditor();
+        uuidEditor = new DefaultAttributeEditor<String>();
+        nameEditor = new DefaultAttributeEditor<String>();
         providerTypeEditor = new DataSetDefProviderTypeEditor();
         columnsEditor = new DataSetDefColumnsEditor();
         view = new DataSetDefEditorView();

@@ -8,7 +8,6 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import org.roger600.gwt.editorsample.client.Logger;
-import org.roger600.gwt.editorsample.client.editor.attribute.StringAttributeEditor;
 import org.roger600.gwt.editorsample.shared.editors.AttributeEditor;
 import org.roger600.gwt.editorsample.shared.model.DataColumnDef;
 
@@ -17,19 +16,19 @@ import java.util.List;
 public class DataColumnDefEditor implements IsWidget, org.roger600.gwt.editorsample.shared.editors.DataColumnDefEditor {
 
     interface View extends IsWidget {
-        void init(DataColumnDefEditor presenter, StringAttributeEditor.View attrEditorView);
+        void init(DataColumnDefEditor presenter, DefaultAttributeEditor.View attrEditorView);
     }
     
     public View view;
     private EditorDelegate<DataColumnDef> delegate;
     private DataColumnDef column;
-    private StringAttributeEditor idEditor;
+    private DefaultAttributeEditor idEditor;
     
     public DataColumnDefEditor() {
         super();
         final TextBox idBox = new TextBox();
         final ValueBoxEditor<String> idBoxEditor = ValueBoxEditor.of(idBox);
-        idEditor = new StringAttributeEditor();
+        idEditor = new DefaultAttributeEditor();
         view = GWT.create(DataColumnDefEditorView.class);
         view.init(this, idEditor.view);
     }
