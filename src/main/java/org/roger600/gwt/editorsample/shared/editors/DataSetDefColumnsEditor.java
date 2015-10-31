@@ -7,6 +7,6 @@ import org.roger600.gwt.editorsample.shared.model.DataColumnDef;
 
 import java.util.List;
 
-public interface DataSetDefColumnsEditor extends IsEditor<CompositeEditor<List<DataColumnDef>, DataColumnDef, DataColumnDefEditor>>, HasEditorDelegate<List<DataColumnDef>>, HasEditorErrors<List<DataColumnDef>> {
+public interface DataSetDefColumnsEditor extends CompositeEditor<List<DataColumnDef>, DataColumnDef, DataColumnDefEditor>, HasEditorErrors<List<DataColumnDef>> {
     
 }

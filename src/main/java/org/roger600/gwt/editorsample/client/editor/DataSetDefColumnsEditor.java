@@ -16,13 +16,38 @@ import java.util.List;
 public class DataSetDefColumnsEditor implements IsWidget, org.roger600.gwt.editorsample.shared.editors.DataSetDefColumnsEditor {
 
     @Override
-    public CompositeEditor<List<DataColumnDef>, DataColumnDef, org.roger600.gwt.editorsample.shared.editors.DataColumnDefEditor> asEditor() {
-        return listEditor;
+    public void setDelegate(EditorDelegate<List<DataColumnDef>> delegate) {
+        listEditor.setDelegate(delegate);
     }
 
     @Override
-    public void setDelegate(EditorDelegate<List<DataColumnDef>> delegate) {
-        listEditor.setDelegate(delegate);
+    public org.roger600.gwt.editorsample.shared.editors.DataColumnDefEditor createEditorForTraversal() {
+        return listEditor.createEditorForTraversal();
+    }
+
+    @Override
+    public String getPathElement(org.roger600.gwt.editorsample.shared.editors.DataColumnDefEditor subEditor) {
+        return listEditor.getPathElement(subEditor);
+    }
+
+    @Override
+    public void setEditorChain(EditorChain<DataColumnDef, org.roger600.gwt.editorsample.shared.editors.DataColumnDefEditor> chain) {
+        listEditor.setEditorChain(chain);
+    }
+
+    @Override
+    public void flush() {
+        listEditor.flush();
+    }
+
+    @Override
+    public void onPropertyChange(String... paths) {
+        listEditor.onPropertyChange(paths);
+    }
+
+    @Override
+    public void setValue(List<DataColumnDef> value) {
+        listEditor.setValue(value);
     }
 
     interface View extends IsWidget {
