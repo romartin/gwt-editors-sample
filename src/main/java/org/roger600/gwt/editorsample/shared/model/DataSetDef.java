@@ -1,5 +1,7 @@
 package org.roger600.gwt.editorsample.shared.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -13,6 +15,7 @@ public class DataSetDef {
     @NotNull
     protected DataSetProviderType provider;
     
+    @NotEmpty
     @Valid
     protected List<DataColumnDef> columns;
     

@@ -1,11 +1,11 @@
 package org.roger600.gwt.editorsample.client.editor;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.editor.ui.client.ValueBoxEditorDecorator;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
+import org.roger600.gwt.editorsample.client.editor.attribute.StringAttributeEditor;
 
 public class DataColumnDefEditorView extends Composite implements DataColumnDefEditor.View {
 
@@ -14,18 +14,14 @@ public class DataColumnDefEditorView extends Composite implements DataColumnDefE
     }
 
     @UiField(provided = true)
-    ValueBoxEditorDecorator<String> id;
+    StringAttributeEditor.View id;
     
     private DataColumnDefEditor presenter;
     
-    public DataColumnDefEditorView() {
-        
-    }
-
     @Override
-    public void init(DataColumnDefEditor presenter, ValueBoxEditorDecorator<String> idEditor) {
+    public void init(DataColumnDefEditor presenter, StringAttributeEditor.View attrEditorView) {
         this.presenter = presenter;
-        this.id = idEditor;
+        this.id = attrEditorView;
         initWidget(Binder.BINDER.createAndBindUi(this));
     }
 

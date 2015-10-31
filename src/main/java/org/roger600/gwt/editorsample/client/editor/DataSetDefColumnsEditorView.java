@@ -4,7 +4,9 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
 
 public class DataSetDefColumnsEditorView extends Composite implements DataSetDefColumnsEditor.View {
 
@@ -28,8 +30,8 @@ public class DataSetDefColumnsEditorView extends Composite implements DataSetDef
     }
 
     @Override
-    public void insert(Widget editorWidget) {
-        columnsPanel.add(editorWidget);
+    public void insert(DataColumnDefEditor.View editorWidget) {
+        columnsPanel.add(editorWidget.asWidget());
     }
 
     @Override

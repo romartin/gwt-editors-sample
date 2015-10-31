@@ -2,8 +2,6 @@ package org.roger600.gwt.editorsample.client.editor;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.EditorError;
-import com.google.gwt.editor.client.IsEditor;
-import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import org.roger600.gwt.editorsample.client.Logger;
@@ -24,6 +22,7 @@ public class DataSetDefProviderTypeEditor implements IsWidget, org.roger600.gwt.
         boolean isSQLType();
         boolean isElasticSearchType();
         void showError(final String message);
+        void clearError();
     }
     
     View view;
@@ -42,12 +41,14 @@ public class DataSetDefProviderTypeEditor implements IsWidget, org.roger600.gwt.
     @Override
     public void showErrors(List<EditorError> errors) {
         Logger.log("DataSetDefProviderTypeEditor#showErrors", errors);
-        if (errors != null) {
+        if (errors != null && !errors.isEmpty()) {
             for (EditorError error : errors) {
                 if (error.getEditor().equals(this)) {
                     view.showError("Error on provider type editor.");            
                 }
             }
+        } else {
+            view.clearError();
         }
     }
 

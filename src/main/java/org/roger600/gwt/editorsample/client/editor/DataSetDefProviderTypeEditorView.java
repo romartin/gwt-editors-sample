@@ -1,10 +1,6 @@
 package org.roger600.gwt.editorsample.client.editor;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.editor.client.Editor;
-import com.google.gwt.editor.client.EditorError;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.uibinder.client.UiField;
@@ -12,9 +8,6 @@ import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
-import org.roger600.gwt.editorsample.shared.model.DataSetProviderType;
-
-import java.util.List;
 
 public class DataSetDefProviderTypeEditorView extends Composite implements DataSetDefProviderTypeEditor.View {
 
@@ -100,7 +93,7 @@ public class DataSetDefProviderTypeEditorView extends Composite implements DataS
         type.setValue(true);
     }
     
-    private void clearError() {
+    public void clearError() {
         errorLabel.setText("");
         errorLabel.setVisible(false);
     }

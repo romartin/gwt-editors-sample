@@ -27,11 +27,11 @@ public class DataSetDefColumnsEditor implements IsWidget, org.roger600.gwt.edito
 
     interface View extends IsWidget {
         void init(DataSetDefColumnsEditor presenter);
-        void insert(Widget editorWidget);
+        void insert(DataColumnDefEditor.View editorWidget);
         void clear();
     }
     
-    private View view;
+    public View view;
     private ListEditor<DataColumnDef, org.roger600.gwt.editorsample.shared.editors.DataColumnDefEditor> listEditor;
     
     public DataSetDefColumnsEditor() {
@@ -45,7 +45,7 @@ public class DataSetDefColumnsEditor implements IsWidget, org.roger600.gwt.edito
         @Override
         public org.roger600.gwt.editorsample.shared.editors.DataColumnDefEditor create(int index) {
             DataColumnDefEditor columnDefEditor = new DataColumnDefEditor();
-            view.insert(columnDefEditor.asWidget());
+            view.insert(columnDefEditor.view);
             return columnDefEditor;
         }
     };

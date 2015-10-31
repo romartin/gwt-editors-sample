@@ -3,12 +3,13 @@ package org.roger600.gwt.editorsample.client.editor;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.EditorDelegate;
 import com.google.gwt.editor.client.EditorError;
-import com.google.gwt.editor.ui.client.ValueBoxEditorDecorator;
 import com.google.gwt.editor.ui.client.adapters.ValueBoxEditor;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import org.roger600.gwt.editorsample.client.Logger;
+import org.roger600.gwt.editorsample.client.editor.attribute.StringAttributeEditor;
+import org.roger600.gwt.editorsample.shared.editors.AttributeEditor;
 import org.roger600.gwt.editorsample.shared.model.DataColumnDef;
 
 import java.util.List;
@@ -16,22 +17,21 @@ import java.util.List;
 public class DataColumnDefEditor implements IsWidget, org.roger600.gwt.editorsample.shared.editors.DataColumnDefEditor {
 
     interface View extends IsWidget {
-        void init(DataColumnDefEditor presenter, ValueBoxEditorDecorator<String> idEditor);
-        
+        void init(DataColumnDefEditor presenter, StringAttributeEditor.View attrEditorView);
     }
     
-    private View view;
+    public View view;
     private EditorDelegate<DataColumnDef> delegate;
     private DataColumnDef column;
-    private ValueBoxEditorDecorator<String> idEditor;
+    private StringAttributeEditor idEditor;
     
     public DataColumnDefEditor() {
         super();
         final TextBox idBox = new TextBox();
         final ValueBoxEditor<String> idBoxEditor = ValueBoxEditor.of(idBox);
-        idEditor = new ValueBoxEditorDecorator<String>(idBox, idBoxEditor);
+        idEditor = new StringAttributeEditor();
         view = GWT.create(DataColumnDefEditorView.class);
-        view.init(this, idEditor);
+        view.init(this, idEditor.view);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class DataColumnDefEditor implements IsWidget, org.roger600.gwt.editorsam
     }
 
     @Override
-    public ValueBoxEditorDecorator<String> id() {
+    public AttributeEditor<String> id() {
         return idEditor;
     }
     
