@@ -25,6 +25,10 @@ public class StringAttributeEditor implements IsWidget, AttributeEditor<String> 
         view = new StringAttributeEditorView();
     }
 
+    public StringAttributeEditor(final View view) {
+        this.view = view;
+    }
+    
     @Override
     public Widget asWidget() {
         return view.asWidget();
