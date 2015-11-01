@@ -1,6 +1,5 @@
-package org.roger600.gwt.editorsample.client;
+package org.roger600.gwt.editorsample.client.core;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.IsEditor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -17,21 +16,13 @@ import java.util.Set;
 public class DataSetDefEditorWorkflow implements IsWidget, IsEditor<org.roger600.gwt.editorsample.shared.editors.DataSetDefEditor> {
 
     interface Driver extends SimpleBeanEditorDriver<DataSetDef, org.roger600.gwt.editorsample.shared.editors.DataSetDefEditor> {}
-    Driver driver = GWT.create(Driver.class);
+    
+    Driver driver;
     DataSetDefEditor editor;
 
-    public DataSetDefEditorWorkflow() {
-        editor = new DataSetDefEditor();
-    }
-
-    @Override
-    public Widget asWidget() {
-        return editor.asWidget();
-    }
-
-    @Override
-    public org.roger600.gwt.editorsample.shared.editors.DataSetDefEditor asEditor() {
-        return editor;
+    public DataSetDefEditorWorkflow(DataSetDefEditor editor, Driver driver) {
+        this.editor = editor;
+        this.driver = driver;
     }
 
     public void edit(final DataSetDef def) {
@@ -64,4 +55,15 @@ public class DataSetDefEditorWorkflow implements IsWidget, IsEditor<org.roger600
         final Set<?> test = violations;
         driver.setConstraintViolations((Iterable<ConstraintViolation<?>>) test);
     }
+
+    @Override
+    public org.roger600.gwt.editorsample.shared.editors.DataSetDefEditor asEditor() {
+        return editor;
+    }
+
+    @Override
+    public Widget asWidget() {
+        return editor.asWidget();
+    }
+    
 }

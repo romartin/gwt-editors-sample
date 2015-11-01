@@ -7,6 +7,9 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import org.roger600.gwt.editorsample.client.core.DataSetDefEditorDriverFactory;
+import org.roger600.gwt.editorsample.client.core.DataSetDefEditorWorkflow;
+import org.roger600.gwt.editorsample.client.editor.DataSetDefEditor;
 import org.roger600.gwt.editorsample.shared.model.ColumnType;
 import org.roger600.gwt.editorsample.shared.model.DataColumnDef;
 import org.roger600.gwt.editorsample.shared.model.DataSetDef;
@@ -38,7 +41,7 @@ public class EditorsSample implements EntryPoint {
   }
 
   private void initDataSetDefEditor() {
-    final DataSetDefEditorWorkflow presenter = new DataSetDefEditorWorkflow();
+    final DataSetDefEditorWorkflow presenter = new DataSetDefEditorWorkflow(new DataSetDefEditor(), DataSetDefEditorDriverFactory.newDataSetDefEditorDriver());
 
     final VerticalPanel mainPanel = new VerticalPanel();
     final Button editButton = new Button("Edit");
