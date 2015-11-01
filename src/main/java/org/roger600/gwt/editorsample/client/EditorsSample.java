@@ -10,6 +10,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import org.roger600.gwt.editorsample.client.core.DataSetDefEditorDriverFactory;
 import org.roger600.gwt.editorsample.client.core.DataSetDefEditorWorkflow;
 import org.roger600.gwt.editorsample.client.editor.DataSetDefEditor;
+import org.roger600.gwt.editorsample.client.validation.group.DataSetDefBasicAttributesValidationGroup;
 import org.roger600.gwt.editorsample.shared.model.ColumnType;
 import org.roger600.gwt.editorsample.shared.model.DataColumnDef;
 import org.roger600.gwt.editorsample.shared.model.DataSetDef;
@@ -45,30 +46,30 @@ public class EditorsSample implements EntryPoint {
 
     final VerticalPanel mainPanel = new VerticalPanel();
     final Button editButton = new Button("Edit");
-    final Button saveButton = new Button("Save");
-    final Button validateButton = new Button("Validate");
+    final Button saveAndValidateButton = new Button("Save and Validate");
+    final Button saveAndValidateBasicAttrsButton = new Button("Save and Validate basic attrs");
     editButton.addClickHandler(new ClickHandler() {
       @Override
       public void onClick(ClickEvent event) {
         presenter.edit(def);
       }
     });
-    saveButton.addClickHandler(new ClickHandler() {
+    saveAndValidateButton.addClickHandler(new ClickHandler() {
       @Override
       public void onClick(ClickEvent event) {
-        EditorsSample.this.def = presenter.save();
+        EditorsSample.this.def = presenter.saveAndValidate();
       }
     });
-    validateButton.addClickHandler(new ClickHandler() {
+    saveAndValidateBasicAttrsButton.addClickHandler(new ClickHandler() {
       @Override
       public void onClick(ClickEvent event) {
-        presenter.validate(def);
+        EditorsSample.this.def = presenter.saveAndValidate(DataSetDefBasicAttributesValidationGroup.class);
       }
     });
     mainPanel.add(presenter);
     mainPanel.add(editButton);
-    mainPanel.add(saveButton);
-    mainPanel.add(validateButton);
+    mainPanel.add(saveAndValidateButton);
+    mainPanel.add(saveAndValidateBasicAttrsButton);
     RootPanel.get().add(mainPanel);
   }
   

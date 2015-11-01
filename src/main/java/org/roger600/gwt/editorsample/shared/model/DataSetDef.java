@@ -1,15 +1,19 @@
 package org.roger600.gwt.editorsample.shared.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.roger600.gwt.editorsample.client.validation.group.DataSetDefBasicAttributesValidationGroup;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.groups.Default;
 import java.util.List;
 
 public class DataSetDef {
-    @NotNull
+    
+    @NotNull(groups = {Default.class, DataSetDefBasicAttributesValidationGroup.class})
     protected String UUID;
-    @NotNull
+    
+    @NotNull(groups = {Default.class, DataSetDefBasicAttributesValidationGroup.class})
     protected String name;
     
     @NotNull

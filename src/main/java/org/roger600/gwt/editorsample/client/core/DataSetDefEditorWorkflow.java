@@ -30,10 +30,10 @@ public class DataSetDefEditorWorkflow implements IsWidget, IsEditor<org.roger600
         driver.edit(def);
     }
 
-    public DataSetDef save() {
+    public DataSetDef saveAndValidate(Class... classes) {
         Logger.log("DataSetDefEditorWorkflow#save - Saving...");
         DataSetDef edited = driver.flush();
-        validateAndSetViolations(edited);
+        validateAndSetViolations(edited, classes);
         if (driver.hasErrors()) {
             // A sub-editor reported errors
             Logger.log("DataSetDefEditorWorkflow#save - Has errors!");
@@ -42,16 +42,21 @@ public class DataSetDefEditorWorkflow implements IsWidget, IsEditor<org.roger600
         return edited;
     }
 
-    public Set<ConstraintViolation<DataSetDef>> validate(final DataSetDef def) {
+    public Set<ConstraintViolation<DataSetDef>> validate(final DataSetDef def, Class... classes) {
         Logger.log("DataSetDefEditorWorkflow#validate - Validating...");
         Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
-        Set<ConstraintViolation<DataSetDef>> violations = validator.validate(def);
+        Set<ConstraintViolation<DataSetDef>> violations;
+        if (classes != null) {
+            violations = validator.validate(def, classes);
+        } else {
+            violations = validator.validate(def);
+        }
         Logger.log("DataSetDefEditorWorkflow#validate - Validated", violations );
         return violations;
     }
 
-    private void validateAndSetViolations(DataSetDef edited) {
-        Set<ConstraintViolation<DataSetDef>> violations = validate(edited);
+    private void validateAndSetViolations(DataSetDef edited, Class... classes) {
+        Set<ConstraintViolation<DataSetDef>> violations = validate(edited, classes);
         final Set<?> test = violations;
         driver.setConstraintViolations((Iterable<ConstraintViolation<?>>) test);
     }
