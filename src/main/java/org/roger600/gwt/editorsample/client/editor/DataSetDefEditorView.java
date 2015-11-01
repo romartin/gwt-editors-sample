@@ -13,10 +13,7 @@ public class DataSetDefEditorView extends Composite implements DataSetDefEditor.
     }
 
     @UiField(provided = true)
-    DefaultAttributeEditor.View uuid;
-
-    @UiField(provided = true)
-    DefaultAttributeEditor.View name;
+    DataSetDefBasicAttributesEditor.View basicAttributesEditorView;
 
     @UiField(provided = true)
     DataSetDefProviderTypeEditor.View provider;
@@ -27,11 +24,10 @@ public class DataSetDefEditorView extends Composite implements DataSetDefEditor.
     DataSetDefEditor presenter;
 
     @Override
-    public void init(DataSetDefEditor presenter, DefaultAttributeEditor.View uuidEditor, DefaultAttributeEditor.View nameEditor,
+    public void init(DataSetDefEditor presenter, DataSetDefBasicAttributesEditor.View basicAttributesEditorView,
                      DataSetDefProviderTypeEditor.View providerTypeEditor, DataSetDefColumnsEditor.View columnsEditor) {
         this.presenter = presenter;
-        uuid = uuidEditor;
-        name = nameEditor;
+        this.basicAttributesEditorView = basicAttributesEditorView;
         provider = providerTypeEditor;
         columns = columnsEditor;
         initWidget(Binder.BINDER.createAndBindUi(this));

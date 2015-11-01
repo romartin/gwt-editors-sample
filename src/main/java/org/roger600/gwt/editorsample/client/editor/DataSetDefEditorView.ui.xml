@@ -12,26 +12,9 @@
   
   <g:VerticalPanel addStyleNames="{style.leftMargin}">
 
-    <!-- UUID. -->
-    <g:HorizontalPanel>
-      <g:HTML text="UUID"/>
-      <sae:DefaultAttributeEditor.View ui:field="uuid">
-        <sae:valuebox>
-          <g:TextBox/>
-        </sae:valuebox>
-      </sae:DefaultAttributeEditor.View>
-    </g:HorizontalPanel>
-
-    <!-- Name. -->
-    <g:HorizontalPanel>
-      <g:HTML text="Name"/>
-      <sae:DefaultAttributeEditor.View ui:field="name">
-        <sae:valuebox>
-          <g:TextBox/>
-        </sae:valuebox>
-      </sae:DefaultAttributeEditor.View>
-    </g:HorizontalPanel>
-
+    <g:HTML text="Basic Attributes Editor:"/>
+    <sae:DataSetDefBasicAttributesEditor.View ui:field="basicAttributesEditorView"/>
+    
     <!-- provider. -->
     <g:VerticalPanel>
       <g:HTML text="Provider"/>

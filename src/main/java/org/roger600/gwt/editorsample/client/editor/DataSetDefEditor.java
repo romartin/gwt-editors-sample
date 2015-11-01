@@ -14,11 +14,12 @@ public class DataSetDefEditor implements IsWidget, org.roger600.gwt.editorsample
 
     interface View extends IsWidget {
         
-        void init(DataSetDefEditor presenter, DefaultAttributeEditor.View uuidEditor, DefaultAttributeEditor.View nameEditor,
+        void init(DataSetDefEditor presenter, DataSetDefBasicAttributesEditor.View basicAttributesEditorView,
                   DataSetDefProviderTypeEditor.View providerTypeEditor, DataSetDefColumnsEditor.View columnsEditor);
     }
     
     View view;
+    DataSetDefBasicAttributesEditor basicAttributesEditor;
     private EditorDelegate<DataSetDef> delegate;
     private DataSetDef dataSetDef;
 
@@ -28,12 +29,11 @@ public class DataSetDefEditor implements IsWidget, org.roger600.gwt.editorsample
     private DataSetDefColumnsEditor columnsEditor;
     
     public DataSetDefEditor() {
-        uuidEditor = new DefaultAttributeEditor<String>();
-        nameEditor = new DefaultAttributeEditor<String>();
+        basicAttributesEditor = new DataSetDefBasicAttributesEditor();
         providerTypeEditor = new DataSetDefProviderTypeEditor();
         columnsEditor = new DataSetDefColumnsEditor();
         view = new DataSetDefEditorView();
-        view.init(this, uuidEditor.view, nameEditor.view, providerTypeEditor.view, columnsEditor.view);
+        view.init(this, basicAttributesEditor.view, providerTypeEditor.view, columnsEditor.view);
     }
 
     @Override
@@ -69,13 +69,8 @@ public class DataSetDefEditor implements IsWidget, org.roger600.gwt.editorsample
     }
 
     @Override
-    public AttributeEditor<String> UUID() {
-        return uuidEditor;
-    }
-
-    @Override
-    public AttributeEditor<String> name() {
-        return nameEditor;
+    public org.roger600.gwt.editorsample.shared.editors.DataSetDefBasicAttributesEditor basicAttributesEditor() {
+        return basicAttributesEditor;
     }
 
     @Override
